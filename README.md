@@ -40,7 +40,7 @@ Make sure sonar_data.csv is present in the root directory.
 Run the `Python` script:
 
 ```bash
-python sonar_classifier.py
+python main.py
 ```
 When prompted, enter 60 comma-separated float values (sonar readings) to classify the object.
 
