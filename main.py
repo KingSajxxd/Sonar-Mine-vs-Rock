@@ -60,11 +60,25 @@ def test_data_accuracy(model):
 # ----- Prediction System Function -----
 def predictive_system(model):
     input_data = input("Enter the data to predict (comma-separated numbers): ").split(',')
-    input_data_as_numpy_array = np.asarray([float(i) for i in input_data])
 
-    # Reshape the data for prediction
+    # Clean and validate input
+    cleaned_input = [i.strip() for i in input_data if i.strip() != '']
+
+    try:
+        input_data_as_numpy_array = np.asarray([float(i) for i in cleaned_input])
+    except ValueError:
+        print("❌ Invalid input. Please enter only numeric values separated by commas.")
+        return
+
+    # For sonar data, we expect 60 features
+    if len(input_data_as_numpy_array) != 60:
+        print(f"❌ Invalid number of input features. Expected 60 values, got {len(input_data_as_numpy_array)}.")
+        return
+
+    # Reshape the input for prediction
     input_data_reshaped = input_data_as_numpy_array.reshape(1, -1)
 
+    # Make prediction
     prediction = model.predict(input_data_reshaped)
     print("\nPrediction:", prediction)
 
@@ -72,6 +86,7 @@ def predictive_system(model):
         print("The object is a Rock")
     else:
         print("The object is a Mine")
+
 
 # ----- Run the System -----
 if __name__ == "__main__":
