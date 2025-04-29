@@ -32,7 +32,7 @@ pip install numpy pandas scikit-learn
 Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/Sonar-Mine-vs-Rock.git
+git clone https://github.com/KingSajxxd/Sonar-Mine-vs-Rock.git
 cd Sonar-Mine-vs-Rock
 ```
 Make sure sonar_data.csv is present in the root directory.
